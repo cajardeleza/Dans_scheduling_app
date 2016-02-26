@@ -23,6 +23,7 @@ namespace DansPrototype
             availability = new AvailabilityWindow();
             employee = new NewEmployee();
             // set up update events
+            employee.OnUpdateData += availability.UpdateData;
         }
 
         private void button1_Click(object sender, EventArgs e)
