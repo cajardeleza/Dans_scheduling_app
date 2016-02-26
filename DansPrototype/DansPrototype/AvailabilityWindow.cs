@@ -102,5 +102,10 @@ namespace DansPrototype
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void AvailabilityWindow_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

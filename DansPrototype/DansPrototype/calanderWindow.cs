@@ -62,5 +62,11 @@ namespace DansPrototype
             home.Show();
             this.Hide();
         }
+
+        private void calanderWindow_Load(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

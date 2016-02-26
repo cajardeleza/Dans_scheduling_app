@@ -366,6 +366,7 @@
             this.Controls.Add(this.monthCalendar1);
             this.Name = "calanderWindow";
             this.Text = "Calander Window";
+            this.Load += new System.EventHandler(this.calanderWindow_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.Server.ResumeLayout(false);
