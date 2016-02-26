@@ -50,8 +50,8 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(42, 20);
-            this.helpToolStripMenuItem.Text = "help";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
             // 
             // calendarButton
             // 
@@ -59,7 +59,7 @@
             this.calendarButton.Name = "calendarButton";
             this.calendarButton.Size = new System.Drawing.Size(93, 84);
             this.calendarButton.TabIndex = 1;
-            this.calendarButton.Text = "Calander\r\n";
+            this.calendarButton.Text = "Calendar\r\n";
             this.calendarButton.UseVisualStyleBackColor = true;
             this.calendarButton.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -105,7 +105,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "HomeScreen";
             this.Text = "Home Screen";
-            this.Load += new System.EventHandler(this.HomeScreen_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeScreen_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);

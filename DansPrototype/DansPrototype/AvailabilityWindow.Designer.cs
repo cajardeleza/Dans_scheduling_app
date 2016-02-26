@@ -182,7 +182,7 @@
             this.Controls.Add(this.monthCalendar1);
             this.Name = "AvailabilityWindow";
             this.Text = "Availability";
-            this.Load += new System.EventHandler(this.AvailabilityWindow_Load_1);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AvailabilityWindow_FormClosing);
             this.Shown += new System.EventHandler(this.AvailabilityWindow_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

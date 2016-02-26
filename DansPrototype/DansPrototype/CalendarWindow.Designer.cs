@@ -1,6 +1,6 @@
 ﻿namespace DansPrototype
 {
-    partial class calanderWindow
+    partial class CalendarWindow
     {
         /// <summary>
         /// Required designer variable.

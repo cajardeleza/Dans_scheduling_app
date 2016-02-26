@@ -12,32 +12,38 @@ namespace DansPrototype
 {
     public partial class HomeScreen : Form
     {
+        private CalendarWindow calendar;
+        private AvailabilityWindow availability;
+        private NewEmployee employee;
+
         public HomeScreen()
         {
             InitializeComponent();
+            calendar = new CalendarWindow();
+            availability = new AvailabilityWindow();
+            employee = new NewEmployee();
+            // set up update events
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            calanderWindow calander = new calanderWindow();
-            calander.Show();
+            calendar.Show();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AvailabilityWindow availability = new AvailabilityWindow();
             availability.Show();
-        }
-
-        private void HomeScreen_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            NewEmployee employee = new NewEmployee();
             employee.Show();
+        }
+
+        private void HomeScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = false;
+            availability.Close();
         }
     }
 }

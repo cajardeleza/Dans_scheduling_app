@@ -54,11 +54,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="calanderWindow.cs">
+    <Compile Include="CalendarWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="calanderWindow.Designer.cs">
-      <DependentUpon>calanderWindow.cs</DependentUpon>
+    <Compile Include="CalendarWindow.Designer.cs">
+      <DependentUpon>CalendarWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="AvailabilityWindow.cs">
       <SubType>Form</SubType>
@@ -91,8 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="calanderWindow.resx">
-      <DependentUpon>calanderWindow.cs</DependentUpon>
+    <Compile Include="UpdateData.cs" />
+    <EmbeddedResource Include="CalendarWindow.resx">
+      <DependentUpon>CalendarWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AvailabilityWindow.resx">
       <DependentUpon>AvailabilityWindow.cs</DependentUpon>
@@ -115,6 +116,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="dans_testDataSet.xsc">
       <DependentUpon>dans_testDataSet.xsd</DependentUpon>
     </None>

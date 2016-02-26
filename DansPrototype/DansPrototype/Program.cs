@@ -9,7 +9,6 @@ namespace DansPrototype
 {
     static class Program
     {
-        public delegate void updateData(object sender);
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

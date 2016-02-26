@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DansPrototype
 {
-    public partial class calanderWindow : Form
+    public partial class CalendarWindow : Form
     {
-        public calanderWindow()
+        public CalendarWindow()
         {
             InitializeComponent();
         }
