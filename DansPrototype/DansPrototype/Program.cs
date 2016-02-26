@@ -23,6 +23,7 @@ namespace DansPrototype
             {
                 Application.Run(new Login());
                 Application.Run(new HomeScreen());
+
             }
             else
             {
