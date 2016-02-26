@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -8,6 +9,7 @@ namespace DansPrototype
 {
     static class Program
     {
+        public delegate void updateData(object sender);
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -16,7 +18,22 @@ namespace DansPrototype
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new HomeScreen());
+
+            // Test for auto login
+            if (!File.Exists("login"))
+            {
+                Application.Run(new Login());
+                Application.Run(new HomeScreen());
+            }
+            else
+            {
+                // Todo: Add loading from login file
+                IEnumerable<string> lines = File.ReadLines("login");
+                Login.host = lines.ElementAt(0);
+                Login.user = lines.ElementAt(1);
+                Login.pass = lines.ElementAt(2);
+                Application.Run(new HomeScreen());
+            }
         }
     }
 }

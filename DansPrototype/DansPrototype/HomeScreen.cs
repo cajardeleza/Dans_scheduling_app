@@ -21,16 +21,12 @@ namespace DansPrototype
         {
             calanderWindow calander = new calanderWindow();
             calander.Show();
-            this.Hide();
-
-
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             AvailabilityWindow availability = new AvailabilityWindow();
             availability.Show();
-            this.Hide();
         }
 
         private void HomeScreen_Load(object sender, EventArgs e)
@@ -42,7 +38,6 @@ namespace DansPrototype
         {
             NewEmployee employee = new NewEmployee();
             employee.Show();
-            this.Hide();
         }
     }
 }
