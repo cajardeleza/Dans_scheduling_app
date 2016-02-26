@@ -14,7 +14,7 @@ namespace DansPrototype
 {
     public partial class NewEmployee : Form
     {
-        MySqlConnection cn = new MySqlConnection(@"server=localhost;user id=root;password=kramer0;database=dans_test;persistsecurityinfo=True");
+        MySqlConnection cn = new MySqlConnection(@"server=" + Login.host + ";user id=" + Login.user + ";password=" + Login.pass + ";database=dans_test;persistsecurityinfo=True");
         MySqlCommand cmd = new MySqlCommand();
         MySqlDataReader dr;
 
