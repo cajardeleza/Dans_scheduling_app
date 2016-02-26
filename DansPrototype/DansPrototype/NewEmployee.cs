@@ -76,6 +76,12 @@ namespace DansPrototype
 
         }
 
-       
+        private void NewEmployee_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
+
+
     }
 }

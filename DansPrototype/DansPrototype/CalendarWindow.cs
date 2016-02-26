@@ -68,5 +68,11 @@ namespace DansPrototype
 
         }
 
+        private void Calendar_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
+
     }
 }
