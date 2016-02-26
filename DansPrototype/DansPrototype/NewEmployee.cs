@@ -14,9 +14,12 @@ namespace DansPrototype
 {
     public partial class NewEmployee : Form
     {
-        MySqlConnection cn = new MySqlConnection(@"server=" + Login.host + ";user id=" + Login.user + ";password=" + Login.pass + ";database=dans_test;persistsecurityinfo=True");
-        MySqlCommand cmd = new MySqlCommand();
-        MySqlDataReader dr;
+        public delegate void UpdateDataHandler(object sender);
+        public event UpdateDataHandler OnUpdateData;
+
+        private MySqlConnection cn = new MySqlConnection(@"server=" + Login.host + ";user id=" + Login.user + ";password=" + Login.pass + ";database=dans_test;persistsecurityinfo=True");
+        private MySqlCommand cmd = new MySqlCommand();
+        private MySqlDataReader dr;
 
         public NewEmployee()
         {
@@ -52,7 +55,6 @@ namespace DansPrototype
                 txtlastname.Text = "";
                 txtposition.Text = "";
                 loadList();
-
             }
         }
 
@@ -64,18 +66,24 @@ namespace DansPrototype
             dr = cmd.ExecuteReader();
             if (dr.HasRows)
             {
-                while( dr.Read())
+                while(dr.Read())
                 {
-              
                     listBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
-
                 }
             }
             cn.Close();
-                      
-
         }
 
-       
+        private void deleteEmployee_Click(object sender, EventArgs e)
+        {
+            // delete employee
+            int id = listBox1.SelectedIndex;
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+            deleteEmployee.Enabled = true;
+        }
     }
 }

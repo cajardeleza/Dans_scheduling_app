@@ -14,8 +14,12 @@ namespace DansPrototype
 {
     public partial class AvailabilityWindow : Form
     {
-        MySqlConnection cn = new MySqlConnection(@"server=" + Login.host + ";user id=" + Login.user + ";password=" + Login.pass + ";database=dans_test;persistsecurityinfo=True");
-        MySqlCommand cmd = new MySqlCommand();
+        public delegate void UpdateDataHandler(object sender);
+        public event UpdateDataHandler OnUpdateData;
+
+        private MySqlConnection cn = new MySqlConnection(@"server=" + Login.host + ";user id=" + Login.user + ";password=" + Login.pass + ";database=dans_test;persistsecurityinfo=True");
+        private MySqlCommand cmd = new MySqlCommand();
+
         public AvailabilityWindow()
         {
             InitializeComponent();
@@ -23,6 +27,16 @@ namespace DansPrototype
 
         private void AvailabilityWindow_Load (object sender, EventArgs e)
         {
+            // Restrict dates to current month
+            DateTime date = DateTime.Today;
+            var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
+            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            monthCalendar1.MinDate = firstDayOfMonth;
+            monthCalendar1.MaxDate = lastDayOfMonth;
+
+            // Refresh currently selected
+            monthCalendar1.SetDate(firstDayOfMonth);
+
             try
             {
                 cn.Open();
@@ -34,6 +48,11 @@ namespace DansPrototype
             }
         }
 
+        public void UpdateData(object sender)
+        {
+            // Update everything
+
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -106,6 +125,25 @@ namespace DansPrototype
         {
             e.Cancel = true;
             Hide();
+        }
+
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
+        {
+            DateTime start = monthCalendar1.SelectionStart;
+            DateTime end = monthCalendar1.SelectionEnd;
+            // check in-between dates
+            for (var dt = start; dt <= end; dt = dt.AddDays(1))
+            {
+                if (Selected.Items.Contains(dt))
+                {
+                    Selected.Items.Remove(dt);
+                }
+                else
+                {
+                    Selected.Items.Add(dt);
+                }
+
+            }
         }
     }
 }

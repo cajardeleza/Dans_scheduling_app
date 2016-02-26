@@ -34,30 +34,36 @@
             this.button1 = new System.Windows.Forms.Button();
             this.Selected = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.bartenderBtn = new System.Windows.Forms.Button();
+            this.serverBtn = new System.Windows.Forms.Button();
+            this.busBtn = new System.Windows.Forms.Button();
+            this.hostBtn = new System.Windows.Forms.Button();
+            this.expoBtn = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.managerBtn = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // monthCalendar1
             // 
             this.monthCalendar1.Location = new System.Drawing.Point(255, 27);
+            this.monthCalendar1.MaxDate = new System.DateTime(2016, 2, 29, 0, 0, 0, 0);
             this.monthCalendar1.MaxSelectionCount = 31;
+            this.monthCalendar1.MinDate = new System.DateTime(2016, 2, 1, 0, 0, 0, 0);
             this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.ShowWeekNumbers = true;
             this.monthCalendar1.TabIndex = 0;
-            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
+            this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(28, 190);
+            this.comboBox1.Location = new System.Drawing.Point(34, 223);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(194, 21);
-            this.comboBox1.TabIndex = 1;
+            this.comboBox1.TabIndex = 5;
             this.comboBox1.Text = "Chose Employee";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -73,7 +79,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(476, 273);
+            this.button1.Location = new System.Drawing.Point(504, 273);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(162, 32);
             this.button1.TabIndex = 3;
@@ -84,69 +90,69 @@
             // Selected
             // 
             this.Selected.FormattingEnabled = true;
-            this.Selected.Location = new System.Drawing.Point(508, 43);
+            this.Selected.Location = new System.Drawing.Point(516, 30);
             this.Selected.Name = "Selected";
-            this.Selected.Size = new System.Drawing.Size(130, 134);
+            this.Selected.Size = new System.Drawing.Size(156, 147);
             this.Selected.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(549, 27);
+            this.label2.Location = new System.Drawing.Point(572, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(48, 13);
             this.label2.TabIndex = 6;
             this.label2.Text = "Off Days";
             // 
-            // button3
+            // bartenderBtn
             // 
-            this.button3.Location = new System.Drawing.Point(28, 58);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(162, 24);
-            this.button3.TabIndex = 7;
-            this.button3.Text = "Bartender";
-            this.button3.UseVisualStyleBackColor = true;
+            this.bartenderBtn.Location = new System.Drawing.Point(6, 55);
+            this.bartenderBtn.Name = "bartenderBtn";
+            this.bartenderBtn.Size = new System.Drawing.Size(203, 24);
+            this.bartenderBtn.TabIndex = 0;
+            this.bartenderBtn.Text = "Bartender";
+            this.bartenderBtn.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // serverBtn
             // 
-            this.button4.Location = new System.Drawing.Point(28, 28);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(162, 22);
-            this.button4.TabIndex = 8;
-            this.button4.Text = "Server";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.serverBtn.Location = new System.Drawing.Point(6, 27);
+            this.serverBtn.Name = "serverBtn";
+            this.serverBtn.Size = new System.Drawing.Size(203, 22);
+            this.serverBtn.TabIndex = 0;
+            this.serverBtn.Text = "Server";
+            this.serverBtn.UseVisualStyleBackColor = true;
+            this.serverBtn.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // busBtn
             // 
-            this.button5.Location = new System.Drawing.Point(28, 88);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(162, 24);
-            this.button5.TabIndex = 9;
-            this.button5.Text = "Bus";
-            this.button5.UseVisualStyleBackColor = true;
+            this.busBtn.Location = new System.Drawing.Point(6, 85);
+            this.busBtn.Name = "busBtn";
+            this.busBtn.Size = new System.Drawing.Size(203, 24);
+            this.busBtn.TabIndex = 0;
+            this.busBtn.Text = "Bus";
+            this.busBtn.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // hostBtn
             // 
-            this.button6.Location = new System.Drawing.Point(28, 118);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(162, 24);
-            this.button6.TabIndex = 10;
-            this.button6.Text = "Host";
-            this.button6.UseVisualStyleBackColor = true;
+            this.hostBtn.Location = new System.Drawing.Point(6, 115);
+            this.hostBtn.Name = "hostBtn";
+            this.hostBtn.Size = new System.Drawing.Size(203, 24);
+            this.hostBtn.TabIndex = 0;
+            this.hostBtn.Text = "Host";
+            this.hostBtn.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // expoBtn
             // 
-            this.button7.Location = new System.Drawing.Point(28, 148);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(162, 22);
-            this.button7.TabIndex = 11;
-            this.button7.Text = "Expo";
-            this.button7.UseVisualStyleBackColor = true;
+            this.expoBtn.Location = new System.Drawing.Point(6, 145);
+            this.expoBtn.Name = "expoBtn";
+            this.expoBtn.Size = new System.Drawing.Size(203, 22);
+            this.expoBtn.TabIndex = 0;
+            this.expoBtn.Text = "Expo";
+            this.expoBtn.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(494, 188);
+            this.button8.Location = new System.Drawing.Point(516, 193);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(75, 23);
             this.button8.TabIndex = 12;
@@ -155,35 +161,59 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(575, 188);
+            this.button9.Location = new System.Drawing.Point(597, 193);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(75, 23);
             this.button9.TabIndex = 13;
             this.button9.Text = "PM";
             this.button9.UseVisualStyleBackColor = true;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.managerBtn);
+            this.groupBox1.Controls.Add(this.expoBtn);
+            this.groupBox1.Controls.Add(this.hostBtn);
+            this.groupBox1.Controls.Add(this.busBtn);
+            this.groupBox1.Controls.Add(this.serverBtn);
+            this.groupBox1.Controls.Add(this.bartenderBtn);
+            this.groupBox1.Location = new System.Drawing.Point(28, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(215, 204);
+            this.groupBox1.TabIndex = 14;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Filter";
+            // 
+            // managerBtn
+            // 
+            this.managerBtn.Location = new System.Drawing.Point(6, 173);
+            this.managerBtn.Name = "managerBtn";
+            this.managerBtn.Size = new System.Drawing.Size(203, 23);
+            this.managerBtn.TabIndex = 1;
+            this.managerBtn.Text = "Manager";
+            this.managerBtn.UseVisualStyleBackColor = true;
+            // 
             // AvailabilityWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(660, 317);
+            this.ClientSize = new System.Drawing.Size(678, 317);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button9);
             this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Selected);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.monthCalendar1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "AvailabilityWindow";
             this.Text = "Availability";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AvailabilityWindow_FormClosing);
             this.Shown += new System.EventHandler(this.AvailabilityWindow_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,12 +227,14 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ListBox Selected;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button bartenderBtn;
+        private System.Windows.Forms.Button serverBtn;
+        private System.Windows.Forms.Button busBtn;
+        private System.Windows.Forms.Button hostBtn;
+        private System.Windows.Forms.Button expoBtn;
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button managerBtn;
     }
 }
