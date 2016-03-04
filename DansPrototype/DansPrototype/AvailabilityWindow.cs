@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,13 +22,15 @@ namespace DansPrototype
         private MySqlCommand cmd = new MySqlCommand();
         private MySqlDataReader dr;
 
+        private List<int> days = new List<int>();
+        private List<int> availability = new List<int>();
 
         public AvailabilityWindow()
         {
             InitializeComponent();
         }
 
-        private void AvailabilityWindow_Load (object sender, EventArgs e)
+        private void AvailabilityWindow_Load(object sender, EventArgs e)
         {
             // Restrict dates to current month
             comboBox1.Items.Clear();
@@ -36,13 +39,18 @@ namespace DansPrototype
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
             monthCalendar1.MaxDate = lastDayOfMonth;
             monthCalendar1.MinDate = firstDayOfMonth;
-            
+
 
             // Refresh currently selected
             monthCalendar1.SetDate(firstDayOfMonth);
 
-            cmd.Connection = cn;  
-            
+            cmd.Connection = cn;
+            }
+
+        private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
         }
 
         public void UpdateData(object sender)
@@ -54,9 +62,8 @@ namespace DansPrototype
         private void button2_Click(object sender, EventArgs e)
         {
             new HomeScreen().Show();
-            this.Hide();
+            Hide();
         }
-
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
@@ -95,19 +102,48 @@ namespace DansPrototype
         */
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            monthCalendar1.Enabled = true;
+            selectedList.Enabled = true;
+            amBtn.Enabled = true;
+            pmBtn.Enabled = true;
+            submitBtn.Enabled = true;
         }
 
-        private void fill_combo_box(String position)
+        private void fill_combo_box()
         {
-           comboBox1.Items.Clear();
-            cn.Open();
-            cmd.CommandText = "select * from employees where Employee_position = '" + position + "' ";
-            dr = cmd.ExecuteReader();
-            int count = 0;
-            if (dr.HasRows)
-            {
+            List<string> positions = new List<string>();
+            if (serverBtn.Checked)
+                positions.Add("Server");
+            if (bartenderBtn.Checked)
+                positions.Add("Bartender");
+            if (busBtn.Checked)
+                positions.Add("Bus");
+            if (hostBtn.Checked)
+                positions.Add("Host");
+            if (expoBtn.Checked)
+                positions.Add("Expo");
+            if (managerBtn.Checked)
+                positions.Add("Manager");
 
+
+            comboBox1.Items.Clear();
+
+            // if no filters are selected, do nothing
+            if (positions.Count == 0)
+                return;
+
+            cn.Open();
+            cmd.CommandText = "select * from employees where Employee_position='";
+            for(var i = 0; i < positions.Count; i++)
+            {
+                cmd.CommandText += positions[i];
+                if (i != positions.Count - 1)
+                    cmd.CommandText += " AND ";
+            }
+            cmd.CommandText += "' ";
+            dr = cmd.ExecuteReader();
+            if(dr.HasRows)
+            {
                 while (dr.Read())
                 {
                     if (count == 0)
@@ -118,28 +154,38 @@ namespace DansPrototype
                     comboBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
                     count++;
                 }
+            }
+            cn.Close();
+        }
 
+        private void serverBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
+        }
+
+        private void bartenderBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
+        }
+
+        private void busBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
             }
 
-            else
-                comboBox1.Text = "";
-
-            cn.Close();
-
-
-        }
-        private void button4_Click(object sender, EventArgs e)
-        {
-            //comboBox1.Text = "";
-            fill_combo_box("Server");
-            
+        private void hostBtn_CheckedChanged(object sender, EventArgs e)
+            {
+            fill_combo_box();
         }
 
-        private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void expoBtn_CheckedChanged(object sender, EventArgs e)
         {
-            e.Cancel = true;
-            comboBox1.Text = "";
-            Hide();
+            fill_combo_box();
+        }
+
+        private void managerBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
         }
 
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
@@ -147,43 +193,31 @@ namespace DansPrototype
             DateTime start = monthCalendar1.SelectionStart;
             DateTime end = monthCalendar1.SelectionEnd;
             // check in-between dates
-            for (var dt = start; dt <= end; dt = dt.AddDays(1))
+            for (var i = start.Day; i <= end.Day; i++)
             {
-                if (Selected.Items.Contains(dt))
+                int index = days.IndexOf(i);
+                if (index == -1) // add to list
+            {
+                    days.Add(i);
+                    availability.Add(0);
+                } else
                 {
-                    Selected.Items.Remove(dt);
+                    days.RemoveAt(index);
+                    availability.RemoveAt(index);
                 }
-                else
+                }
+            // sort
+            ArrayList sort = new ArrayList();
+            foreach (var o in selectedList.Items)
                 {
-                    Selected.Items.Add(dt);
+                sort.Add(o);
                 }
-
+            sort.Sort();
+            selectedList.Items.Clear();
+            foreach (var o in sort)
+            {
+                selectedList.Items.Add(o);
             }
-        }
-
-        private void bartenderBtn_Click(object sender, EventArgs e)
-        {
-            //comboBox1.Text = "";
-            fill_combo_box("Bartender");
-        }
-
-        private void busBtn_Click(object sender, EventArgs e)
-        {
-            //comboBox1.Text = "";
-            fill_combo_box("Bus");
-        }
-
-        private void hostBtn_Click(object sender, EventArgs e)
-        {
-            //comboBox1.Text = "";
-            fill_combo_box("Host");
-        }
-
-        private void expoBtn_Click(object sender, EventArgs e)
-        {
-            //comboBox1.Text = "";
-            fill_combo_box("Expo");
-        }
 
         private void managerBtn_Click(object sender, EventArgs e)
         {
