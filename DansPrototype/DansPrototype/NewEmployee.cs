@@ -104,7 +104,7 @@ namespace DansPrototype
         private void submitBtn_Click(object sender, EventArgs e)
         {
             if (txtid.Text != "" & txtfname.Text != "" & txtlastname.Text != "" & txtposition.Text != "")
-            {
+        {
                 cn.Open();
 
                 cmd.CommandText = "insert into employees (id_num, Employee_FirstName, Employee_LastName, Employee_position) values ('" + txtid.Text + "','" + txtfname.Text + " ',' " + txtlastname.Text + " ',' " + txtposition.Text + "')";

@@ -109,7 +109,33 @@ namespace DansPrototype
             submitBtn.Enabled = true;
         }
 
-        private void fill_combo_box()
+        private void fill_combo_box(string position)
+        {
+            comboBox1.Items.Clear();
+            cn.Open();
+            cmd.CommandText = "select * from employees where Employee_position = '" + position + "'";
+           dr = cmd.ExecuteReader();
+
+
+            var count = 0;
+                if (dr.HasRows)
+                {
+                    while (dr.Read())
+                    {
+                        if (count == 0)
+                        {
+                            comboBox1.Text = dr[1].ToString() + " " + dr[2].ToString();
+                        }
+
+                        comboBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
+                        count++;
+                    }
+                }
+                cn.Close();
+            
+        }
+
+        private void add_to_comboBox()
         {
             List<string> positions = new List<string>();
             if (serverBtn.Checked)
@@ -125,68 +151,87 @@ namespace DansPrototype
             if (managerBtn.Checked)
                 positions.Add("Manager");
 
-
-            comboBox1.Items.Clear();
-
+            
             // if no filters are selected, do nothing
             if (positions.Count == 0)
                 return;
 
             cn.Open();
-            cmd.CommandText = "select * from employees where Employee_position='";
-            for(var i = 0; i < positions.Count; i++)
+            //cmd.CommandText = "select * from employees where Employee_position=";
+            if (positions.Count == 1)
             {
-                cmd.CommandText += positions[i];
-                if (i != positions.Count - 1)
-                    cmd.CommandText += " AND ";
+                cmd.CommandText = "select * from employees where Employee_position='" + positions[0] + "'";
             }
-            cmd.CommandText += "' ";
+
+            else
+            {
+
+                cmd.CommandText = "select * from employees where Employee_position in ('" + positions[0] + "'";
+                //WHERE id in (3,4)
+                for (var i = 1; i < positions.Count; i++)
+                {
+                    cmd.CommandText += ",'" + positions[i] + "'";
+                }
+
+
+                cmd.CommandText += ")";
+            }
+
+
             dr = cmd.ExecuteReader();
-            var count = 0;
-            if(dr.HasRows)
+            if (dr.HasRows)
             {
                 while (dr.Read())
                 {
-                    if (count == 0)
-                    {
-                        comboBox1.Text = dr[1].ToString() + " " + dr[2].ToString();
-                    }
-
+                   
                     comboBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
-                    count++;
+                    
                 }
             }
             cn.Close();
+
         }
 
         private void serverBtn_CheckedChanged(object sender, EventArgs e)
         {
-            fill_combo_box();
+            comboBox1.Items.Clear();
+            //fill_combo_box("Server");
+            add_to_comboBox();
         }
 
         private void bartenderBtn_CheckedChanged(object sender, EventArgs e)
         {
-            fill_combo_box();
+            comboBox1.Items.Clear();
+            //fill_combo_box("Bartender");
+            add_to_comboBox();
         }
 
         private void busBtn_CheckedChanged(object sender, EventArgs e)
         {
-            fill_combo_box();
-            }
+            comboBox1.Items.Clear();
+            //fill_combo_box("Bus");
+            add_to_comboBox();
+        }
 
         private void hostBtn_CheckedChanged(object sender, EventArgs e)
             {
-            fill_combo_box();
-            }
+            comboBox1.Items.Clear();
+            //fill_combo_box("Host");
+            add_to_comboBox();
+        }
 
         private void expoBtn_CheckedChanged(object sender, EventArgs e)
         {
-            fill_combo_box();
+            comboBox1.Items.Clear();
+            //fill_combo_box("Expo");
+            add_to_comboBox();
         }
 
         private void managerBtn_CheckedChanged(object sender, EventArgs e)
         {
-            fill_combo_box();
+            comboBox1.Items.Clear();
+            //fill_combo_box("Manager");
+            add_to_comboBox();
         }
 
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
