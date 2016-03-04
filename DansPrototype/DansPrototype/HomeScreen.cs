@@ -46,5 +46,10 @@ namespace DansPrototype
             e.Cancel = false;
             availability.Close();
         }
+
+        private void HomeScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

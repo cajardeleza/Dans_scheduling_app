@@ -22,6 +22,7 @@ namespace DansPrototype
             if (!File.Exists("login"))
             {
                 Application.Run(new Login());
+
                 Application.Run(new HomeScreen());
 
             }

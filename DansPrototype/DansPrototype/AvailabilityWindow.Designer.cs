@@ -112,6 +112,7 @@
             this.bartenderBtn.TabIndex = 0;
             this.bartenderBtn.Text = "Bartender";
             this.bartenderBtn.UseVisualStyleBackColor = true;
+            this.bartenderBtn.Click += new System.EventHandler(this.bartenderBtn_Click);
             // 
             // serverBtn
             // 
@@ -131,6 +132,7 @@
             this.busBtn.TabIndex = 0;
             this.busBtn.Text = "Bus";
             this.busBtn.UseVisualStyleBackColor = true;
+            this.busBtn.Click += new System.EventHandler(this.busBtn_Click);
             // 
             // hostBtn
             // 
@@ -140,6 +142,7 @@
             this.hostBtn.TabIndex = 0;
             this.hostBtn.Text = "Host";
             this.hostBtn.UseVisualStyleBackColor = true;
+            this.hostBtn.Click += new System.EventHandler(this.hostBtn_Click);
             // 
             // expoBtn
             // 
@@ -149,6 +152,7 @@
             this.expoBtn.TabIndex = 0;
             this.expoBtn.Text = "Expo";
             this.expoBtn.UseVisualStyleBackColor = true;
+            this.expoBtn.Click += new System.EventHandler(this.expoBtn_Click);
             // 
             // button8
             // 
@@ -191,6 +195,7 @@
             this.managerBtn.TabIndex = 1;
             this.managerBtn.Text = "Manager";
             this.managerBtn.UseVisualStyleBackColor = true;
+            this.managerBtn.Click += new System.EventHandler(this.managerBtn_Click);
             // 
             // AvailabilityWindow
             // 

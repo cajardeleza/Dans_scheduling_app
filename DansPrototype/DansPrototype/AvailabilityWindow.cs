@@ -19,6 +19,8 @@ namespace DansPrototype
 
         private MySqlConnection cn = new MySqlConnection(@"server=" + Login.host + ";user id=" + Login.user + ";password=" + Login.pass + ";database=dans_test;persistsecurityinfo=True");
         private MySqlCommand cmd = new MySqlCommand();
+        private MySqlDataReader dr;
+
 
         public AvailabilityWindow()
         {
@@ -28,24 +30,19 @@ namespace DansPrototype
         private void AvailabilityWindow_Load (object sender, EventArgs e)
         {
             // Restrict dates to current month
+            comboBox1.Items.Clear();
             DateTime date = DateTime.Today;
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-            monthCalendar1.MinDate = firstDayOfMonth;
             monthCalendar1.MaxDate = lastDayOfMonth;
+            monthCalendar1.MinDate = firstDayOfMonth;
+            
 
             // Refresh currently selected
             monthCalendar1.SetDate(firstDayOfMonth);
 
-            try
-            {
-                cn.Open();
-            }
-            catch(MySqlException ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
+            cmd.Connection = cn;  
+            
         }
 
         public void UpdateData(object sender)
@@ -101,29 +98,47 @@ namespace DansPrototype
             
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void fill_combo_box(String position)
         {
-            MySqlCommand cm = new MySqlCommand("SELECT Employee_FirstName from employees WHERE Employee_position = 'Server' ");
-            try
+           comboBox1.Items.Clear();
+            cn.Open();
+            cmd.CommandText = "select * from employees where Employee_position = '" + position + "' ";
+            dr = cmd.ExecuteReader();
+            int count = 0;
+            if (dr.HasRows)
             {
-                cn.Open();
-                MySqlDataReader dr = cm.ExecuteReader();
+
                 while (dr.Read())
                 {
+                    if (count == 0)
+                    {
+                        comboBox1.Text = dr[1].ToString() + " " + dr[2].ToString();
+                    }
+
                     comboBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
+                    count++;
                 }
-                dr.Close();
-                dr.Dispose();
+
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+            else
+                comboBox1.Text = "";
+
+            cn.Close();
+
+
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            //comboBox1.Text = "";
+            fill_combo_box("Server");
+            
         }
 
         private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
         {
             e.Cancel = true;
+            comboBox1.Text = "";
             Hide();
         }
 
@@ -144,6 +159,36 @@ namespace DansPrototype
                 }
 
             }
+        }
+
+        private void bartenderBtn_Click(object sender, EventArgs e)
+        {
+            //comboBox1.Text = "";
+            fill_combo_box("Bartender");
+        }
+
+        private void busBtn_Click(object sender, EventArgs e)
+        {
+            //comboBox1.Text = "";
+            fill_combo_box("Bus");
+        }
+
+        private void hostBtn_Click(object sender, EventArgs e)
+        {
+            //comboBox1.Text = "";
+            fill_combo_box("Host");
+        }
+
+        private void expoBtn_Click(object sender, EventArgs e)
+        {
+            //comboBox1.Text = "";
+            fill_combo_box("Expo");
+        }
+
+        private void managerBtn_Click(object sender, EventArgs e)
+        {
+            //comboBox1.Text = "";
+            fill_combo_box("Manager");
         }
     }
 }
