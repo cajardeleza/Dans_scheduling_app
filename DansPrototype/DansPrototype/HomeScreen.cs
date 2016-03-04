@@ -19,6 +19,8 @@ namespace DansPrototype
         public HomeScreen()
         {
             InitializeComponent();
+            // center it on screen
+            CenterToScreen();
             calendar = new CalendarWindow();
             availability = new AvailabilityWindow();
             employee = new NewEmployee();

@@ -58,7 +58,7 @@
             // 
             // submit
             // 
-            this.submit.Location = new System.Drawing.Point(391, 253);
+            this.submit.Location = new System.Drawing.Point(88, 165);
             this.submit.Name = "submit";
             this.submit.Size = new System.Drawing.Size(112, 25);
             this.submit.TabIndex = 4;

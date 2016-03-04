@@ -89,9 +89,12 @@
             // 
             // Selected
             // 
+            this.Selected.ColumnWidth = 50;
             this.Selected.FormattingEnabled = true;
             this.Selected.Location = new System.Drawing.Point(516, 30);
+            this.Selected.MultiColumn = true;
             this.Selected.Name = "Selected";
+            this.Selected.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.Selected.Size = new System.Drawing.Size(156, 147);
             this.Selected.TabIndex = 5;
             // 

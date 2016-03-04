@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using MySql.Data.Types;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,33 +20,26 @@ namespace DansPrototype
 
         private MySqlConnection cn = new MySqlConnection(@"server=" + Login.host + ";user id=" + Login.user + ";password=" + Login.pass + ";database=dans_test;persistsecurityinfo=True");
         private MySqlCommand cmd = new MySqlCommand();
+        private MySqlDataReader dr;
 
         public AvailabilityWindow()
         {
             InitializeComponent();
         }
 
-        private void AvailabilityWindow_Load (object sender, EventArgs e)
+        private void AvailabilityWindow_Load(object sender, EventArgs e)
         {
             // Restrict dates to current month
             DateTime date = DateTime.Today;
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-            monthCalendar1.MinDate = firstDayOfMonth;
             monthCalendar1.MaxDate = lastDayOfMonth;
+            monthCalendar1.MinDate = firstDayOfMonth;
 
             // Refresh currently selected
             monthCalendar1.SetDate(firstDayOfMonth);
 
-            try
-            {
-                cn.Open();
-            }
-            catch(MySqlException ex)
-            {
-                MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
+            cmd.Connection = cn;
         }
 
         public void UpdateData(object sender)
@@ -103,22 +97,23 @@ namespace DansPrototype
 
         private void button4_Click(object sender, EventArgs e)
         {
-            MySqlCommand cm = new MySqlCommand("SELECT Employee_FirstName from employees WHERE Employee_position = 'Server' ");
-            try
+            fill_combo_box("Server");
+        }
+
+        private void fill_combo_box(string position)
+        {
+            comboBox1.Items.Clear();
+            cn.Open();
+            cmd.CommandText = "select * from employees where Employee_position='" + position + "' ";
+            dr = cmd.ExecuteReader();
+            if(dr.HasRows)
             {
-                cn.Open();
-                MySqlDataReader dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
                     comboBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
                 }
-                dr.Close();
-                dr.Dispose();
             }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            cn.Close();
         }
 
         private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -132,17 +127,28 @@ namespace DansPrototype
             DateTime start = monthCalendar1.SelectionStart;
             DateTime end = monthCalendar1.SelectionEnd;
             // check in-between dates
-            for (var dt = start; dt <= end; dt = dt.AddDays(1))
+            for (var i = start.Day; i <= end.Day; i++)
             {
-                if (Selected.Items.Contains(dt))
+                if (Selected.Items.Contains(i))
                 {
-                    Selected.Items.Remove(dt);
+                    Selected.Items.Remove(i);
                 }
                 else
                 {
-                    Selected.Items.Add(dt);
+                    Selected.Items.Add(i);
                 }
-
+            }
+            // sort
+            ArrayList sort = new ArrayList();
+            foreach(var o in Selected.Items)
+            {
+                sort.Add(o);
+            }
+            sort.Sort();
+            Selected.Items.Clear();
+            foreach(var o in sort)
+            {
+                Selected.Items.Add(o);
             }
         }
     }
