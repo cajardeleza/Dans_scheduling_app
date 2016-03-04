@@ -22,6 +22,9 @@ namespace DansPrototype
         private MySqlCommand cmd = new MySqlCommand();
         private MySqlDataReader dr;
 
+        private List<int> days = new List<int>();
+        private List<int> availability = new List<int>();
+
         public AvailabilityWindow()
         {
             InitializeComponent();
@@ -42,6 +45,12 @@ namespace DansPrototype
             cmd.Connection = cn;
         }
 
+        private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            Hide();
+        }
+
         public void UpdateData(object sender)
         {
             // Update everything
@@ -51,9 +60,8 @@ namespace DansPrototype
         private void button2_Click(object sender, EventArgs e)
         {
             new HomeScreen().Show();
-            this.Hide();
+            Hide();
         }
-
 
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
@@ -92,19 +100,45 @@ namespace DansPrototype
         */
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            monthCalendar1.Enabled = true;
+            selectedList.Enabled = true;
+            amBtn.Enabled = true;
+            pmBtn.Enabled = true;
+            submitBtn.Enabled = true;
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void fill_combo_box()
         {
-            fill_combo_box("Server");
-        }
+            List<string> positions = new List<string>();
+            if (serverBtn.Checked)
+                positions.Add("Server");
+            if (bartenderBtn.Checked)
+                positions.Add("Bartender");
+            if (busBtn.Checked)
+                positions.Add("Bus");
+            if (hostBtn.Checked)
+                positions.Add("Host");
+            if (expoBtn.Checked)
+                positions.Add("Expo");
+            if (managerBtn.Checked)
+                positions.Add("Manager");
 
-        private void fill_combo_box(string position)
-        {
+
             comboBox1.Items.Clear();
+
+            // if no filters are selected, do nothing
+            if (positions.Count == 0)
+                return;
+
             cn.Open();
-            cmd.CommandText = "select * from employees where Employee_position='" + position + "' ";
+            cmd.CommandText = "select * from employees where Employee_position='";
+            for(var i = 0; i < positions.Count; i++)
+            {
+                cmd.CommandText += positions[i];
+                if (i != positions.Count - 1)
+                    cmd.CommandText += " AND ";
+            }
+            cmd.CommandText += "' ";
             dr = cmd.ExecuteReader();
             if(dr.HasRows)
             {
@@ -116,10 +150,34 @@ namespace DansPrototype
             cn.Close();
         }
 
-        private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
+        private void serverBtn_CheckedChanged(object sender, EventArgs e)
         {
-            e.Cancel = true;
-            Hide();
+            fill_combo_box();
+        }
+
+        private void bartenderBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
+        }
+
+        private void busBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
+        }
+
+        private void hostBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
+        }
+
+        private void expoBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
+        }
+
+        private void managerBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
         }
 
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
@@ -129,26 +187,28 @@ namespace DansPrototype
             // check in-between dates
             for (var i = start.Day; i <= end.Day; i++)
             {
-                if (Selected.Items.Contains(i))
+                int index = days.IndexOf(i);
+                if (index == -1) // add to list
                 {
-                    Selected.Items.Remove(i);
-                }
-                else
+                    days.Add(i);
+                    availability.Add(0);
+                } else
                 {
-                    Selected.Items.Add(i);
+                    days.RemoveAt(index);
+                    availability.RemoveAt(index);
                 }
             }
             // sort
             ArrayList sort = new ArrayList();
-            foreach(var o in Selected.Items)
+            foreach (var o in selectedList.Items)
             {
                 sort.Add(o);
             }
             sort.Sort();
-            Selected.Items.Clear();
-            foreach(var o in sort)
+            selectedList.Items.Clear();
+            foreach (var o in sort)
             {
-                Selected.Items.Add(o);
+                selectedList.Items.Add(o);
             }
         }
     }

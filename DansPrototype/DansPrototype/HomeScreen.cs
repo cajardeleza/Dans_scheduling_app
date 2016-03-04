@@ -47,6 +47,8 @@ namespace DansPrototype
         {
             e.Cancel = false;
             availability.Close();
+            employee.Close();
+            calendar.Close();
         }
     }
 }

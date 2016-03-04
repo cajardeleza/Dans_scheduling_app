@@ -55,10 +55,10 @@
             // 
             // calendarButton
             // 
-            this.calendarButton.Location = new System.Drawing.Point(30, 38);
+            this.calendarButton.Location = new System.Drawing.Point(30, 142);
             this.calendarButton.Name = "calendarButton";
-            this.calendarButton.Size = new System.Drawing.Size(93, 84);
-            this.calendarButton.TabIndex = 1;
+            this.calendarButton.Size = new System.Drawing.Size(93, 89);
+            this.calendarButton.TabIndex = 2;
             this.calendarButton.Text = "Calendar\r\n";
             this.calendarButton.UseVisualStyleBackColor = true;
             this.calendarButton.Click += new System.EventHandler(this.button1_Click);
@@ -68,17 +68,17 @@
             this.AvailabilityButton.Location = new System.Drawing.Point(148, 38);
             this.AvailabilityButton.Name = "AvailabilityButton";
             this.AvailabilityButton.Size = new System.Drawing.Size(93, 84);
-            this.AvailabilityButton.TabIndex = 2;
+            this.AvailabilityButton.TabIndex = 1;
             this.AvailabilityButton.Text = "Availability";
             this.AvailabilityButton.UseVisualStyleBackColor = true;
             this.AvailabilityButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // NewEmployeeButton
             // 
-            this.NewEmployeeButton.Location = new System.Drawing.Point(30, 142);
+            this.NewEmployeeButton.Location = new System.Drawing.Point(30, 38);
             this.NewEmployeeButton.Name = "NewEmployeeButton";
-            this.NewEmployeeButton.Size = new System.Drawing.Size(93, 89);
-            this.NewEmployeeButton.TabIndex = 3;
+            this.NewEmployeeButton.Size = new System.Drawing.Size(93, 84);
+            this.NewEmployeeButton.TabIndex = 0;
             this.NewEmployeeButton.Text = "Add New Employee";
             this.NewEmployeeButton.UseVisualStyleBackColor = true;
             this.NewEmployeeButton.Click += new System.EventHandler(this.button3_Click);
@@ -88,7 +88,7 @@
             this.ViewSchedButton.Location = new System.Drawing.Point(148, 142);
             this.ViewSchedButton.Name = "ViewSchedButton";
             this.ViewSchedButton.Size = new System.Drawing.Size(93, 89);
-            this.ViewSchedButton.TabIndex = 4;
+            this.ViewSchedButton.TabIndex = 3;
             this.ViewSchedButton.Text = "View Schedule";
             this.ViewSchedButton.UseVisualStyleBackColor = true;
             // 
