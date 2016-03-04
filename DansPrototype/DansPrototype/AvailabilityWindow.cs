@@ -48,10 +48,10 @@ namespace DansPrototype
             }
 
         private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
-            {
+        {
             e.Cancel = true;
             Hide();
-            }
+        }
 
         public void UpdateData(object sender)
         {
@@ -80,26 +80,6 @@ namespace DansPrototype
 
         }
 
-        /*private void fillComboBox()
-        {
-            comboBox1.Items.Clear();
-            cn.Open();
-            cmd.CommandText = "select * from employees";
-            dr = cmd.ExecuteReader();
-            if (dr.HasRows)
-            {
-                while (dr.Read())
-                {
-
-                    comboBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
-
-                }
-            }
-            cn.Close();
-
-
-        }
-        */
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             monthCalendar1.Enabled = true;

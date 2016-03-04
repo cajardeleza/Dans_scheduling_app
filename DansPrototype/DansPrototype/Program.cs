@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,29 +23,30 @@ namespace DansPrototype
             if (!File.Exists("login"))
             {
                 Application.Run(new Login());
-
-                Application.Run(new HomeScreen());
-
             }
             else
             {
-                // Todo: Add loading from login file
                 IEnumerable<string> lines = File.ReadLines("login");
                 Login.host = lines.ElementAt(0);
                 Login.user = lines.ElementAt(1);
                 Login.pass = lines.ElementAt(2);
-                
             }
 
+            // check for new table and recreate table if it is a new month
+            MySqlConnection cn = new MySqlConnection(@"server=" + Login.host + ";user id=" + Login.user + ";password=" + Login.pass + ";database=dans_test;persistsecurityinfo=True");
+            cn.Open();
+            MySqlCommand cmd = new MySqlCommand("SHOW TABLES LIKE 'employees'");
+            cmd.Connection = cn;
+            MySqlDataReader dr = cmd.ExecuteReader();
+            if (!dr.HasRows)
+            {
+                cmd.CommandText = @"CREATE TABLE employees (id_num INT(11) NOT NULL auto_increment";
+            }
+            cn.Close();
 
-            /* string query = @"CREATE TABLE first (" + a.Columns[0] + " int(20) NOT NULL auto_increment, "
-                      + a.Columns[1].ToString() + " varchar(100) NOT NULL default,
-                      PRIMARY KEY (" + a.Columns[0]+")"
-                      */
+            DateTime dt = DateTime.Now;
 
-            DateTime current_day = DateTime.Now;
-            //if
-            Application.Run(new HomeScreen());
+                Application.Run(new HomeScreen());
+            }
         }
     }
-}
