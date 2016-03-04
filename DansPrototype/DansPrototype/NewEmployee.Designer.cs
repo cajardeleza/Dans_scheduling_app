@@ -168,6 +168,7 @@
             this.button1.TabIndex = 12;
             this.button1.Text = "Submit";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // NewEmployee
             // 
@@ -189,8 +190,8 @@
             this.Controls.Add(this.txtfname);
             this.Name = "NewEmployee";
             this.Text = "Add Employee";
-            this.Load += new System.EventHandler(this.NewEmployee_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewEmployee_FormClosing);
+            this.Load += new System.EventHandler(this.NewEmployee_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
