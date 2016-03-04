@@ -59,7 +59,7 @@ namespace DansPrototype
                 }
             }
             cn.Close();
-        }
+        } // sync
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
