@@ -48,10 +48,10 @@ namespace DansPrototype
             }
 
         private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
+            {
             e.Cancel = true;
             Hide();
-        }
+            }
 
         public void UpdateData(object sender)
         {
@@ -166,6 +166,19 @@ namespace DansPrototype
         private void bartenderBtn_CheckedChanged(object sender, EventArgs e)
         {
             fill_combo_box();
+                }
+            }
+            cn.Close();
+        }
+
+        private void serverBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
+        }
+
+        private void bartenderBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
         }
 
         private void busBtn_CheckedChanged(object sender, EventArgs e)
@@ -176,7 +189,7 @@ namespace DansPrototype
         private void hostBtn_CheckedChanged(object sender, EventArgs e)
             {
             fill_combo_box();
-        }
+            }
 
         private void expoBtn_CheckedChanged(object sender, EventArgs e)
         {
@@ -218,11 +231,6 @@ namespace DansPrototype
             {
                 selectedList.Items.Add(o);
             }
-
-        private void managerBtn_Click(object sender, EventArgs e)
-        {
-            //comboBox1.Text = "";
-            fill_combo_box("Manager");
         }
     }
 }

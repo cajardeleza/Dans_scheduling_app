@@ -19,6 +19,8 @@ namespace DansPrototype
         public HomeScreen()
         {
             InitializeComponent();
+            // center it on screen
+            CenterToScreen();
             calendar = new CalendarWindow();
             availability = new AvailabilityWindow();
             employee = new NewEmployee();
@@ -45,6 +47,8 @@ namespace DansPrototype
         {
             e.Cancel = false;
             availability.Close();
+            employee.Close();
+            calendar.Close();
         }
 
         private void HomeScreen_Load(object sender, EventArgs e)

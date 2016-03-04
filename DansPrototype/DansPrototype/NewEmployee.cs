@@ -32,16 +32,16 @@ namespace DansPrototype
             loadList();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void NewEmployee_FormClosing(object sender, FormClosingEventArgs e)
         {
-            new HomeScreen().Show();
-            this.Hide();
+            e.Cancel = true;
+            Hide();
         }
 
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (txtid.Text != "" & txtfname.Text != "" & txtlastname.Text != "" & txtposition.Text != "")
+            if (txtid.Text != "" & txtfname.Text != "" & txtlastname.Text != "" & txtposition.Text!="")
             {
                 cn.Open();
 
@@ -86,9 +86,9 @@ namespace DansPrototype
             Hide();
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtposition_SelectedIndexChanged(object sender, EventArgs e)
         {
-            deleteEmployee.Enabled = true;
+            txtposition.Text = "" + txtposition.SelectedItem;
         }
     }
 }

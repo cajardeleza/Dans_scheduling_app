@@ -157,7 +157,7 @@
             this.txtposition.Name = "txtposition";
             this.txtposition.Size = new System.Drawing.Size(116, 21);
             this.txtposition.TabIndex = 3;
-            //this.txtposition.SelectedIndexChanged += new System.EventHandler(this.txtposition_SelectedIndexChanged);
+            this.txtposition.SelectedIndexChanged += new System.EventHandler(this.txtposition_SelectedIndexChanged);
             // 
             // button1
             // 

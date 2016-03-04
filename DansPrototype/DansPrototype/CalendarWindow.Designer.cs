@@ -354,7 +354,7 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // calanderWindow
+            // CalendarWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -364,8 +364,9 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.monthCalendar1);
-            this.Name = "calanderWindow";
+            this.Name = "CalendarWindow";
             this.Text = "Calander Window";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalendarWindow_FormClosing);
             this.Load += new System.EventHandler(this.calanderWindow_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
