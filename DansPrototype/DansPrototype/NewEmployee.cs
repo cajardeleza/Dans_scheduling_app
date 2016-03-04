@@ -80,15 +80,9 @@ namespace DansPrototype
             int id = listBox1.SelectedIndex;
         }
 
-        private void NewEmployee_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            Hide();
-        }
-
         private void txtposition_SelectedIndexChanged(object sender, EventArgs e)
         {
-            txtposition.Text = "" + txtposition.SelectedItem;
+            txtposition.Text = (string)txtposition.SelectedItem;
         }
 
         private void button1_Click_1(object sender, EventArgs e)

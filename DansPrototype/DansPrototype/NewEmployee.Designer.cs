@@ -1,4 +1,6 @@
-﻿namespace DansPrototype
+﻿using System;
+
+namespace DansPrototype
 {
     partial class NewEmployee
     {
@@ -195,6 +197,11 @@
             this.ResumeLayout(false);
             this.PerformLayout();
 
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

@@ -142,6 +142,7 @@ namespace DansPrototype
             }
             cmd.CommandText += "' ";
             dr = cmd.ExecuteReader();
+            var count = 0;
             if(dr.HasRows)
             {
                 while (dr.Read())
@@ -153,19 +154,6 @@ namespace DansPrototype
 
                     comboBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
                     count++;
-                }
-            }
-            cn.Close();
-        }
-
-        private void serverBtn_CheckedChanged(object sender, EventArgs e)
-        {
-            fill_combo_box();
-        }
-
-        private void bartenderBtn_CheckedChanged(object sender, EventArgs e)
-        {
-            fill_combo_box();
                 }
             }
             cn.Close();
