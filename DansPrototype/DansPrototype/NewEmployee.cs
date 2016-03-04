@@ -45,9 +45,12 @@ namespace DansPrototype
             {
                 cn.Open();
 
+                
                 cmd.CommandText = "insert into employees (id_num, Employee_FirstName, Employee_LastName, Employee_position) values ('" + txtid.Text + "','" + txtfname.Text + " ',' " + txtlastname.Text + " ',' " + txtposition.Text + "')";
                 cmd.ExecuteNonQuery();
                 cmd.Clone();
+
+
                 MessageBox.Show("record inserted", "programming at c.Jard");
                 cn.Close();
                 txtid.Text = "";
@@ -68,7 +71,14 @@ namespace DansPrototype
             {
                 while(dr.Read())
                 {
-                    listBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
+                    if (txtid.Text != dr[0])
+                    {
+                        listBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
+                    }
+                    else
+                    {
+
+                    }
                 }
             }
             cn.Close();
