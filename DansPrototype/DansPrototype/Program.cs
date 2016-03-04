@@ -33,8 +33,18 @@ namespace DansPrototype
                 Login.host = lines.ElementAt(0);
                 Login.user = lines.ElementAt(1);
                 Login.pass = lines.ElementAt(2);
-                Application.Run(new HomeScreen());
+                
             }
+
+
+            /* string query = @"CREATE TABLE first (" + a.Columns[0] + " int(20) NOT NULL auto_increment, "
+                      + a.Columns[1].ToString() + " varchar(100) NOT NULL default,
+                      PRIMARY KEY (" + a.Columns[0]+")"
+                      */
+
+            DateTime current_day = DateTime.Now;
+            //if
+            Application.Run(new HomeScreen());
         }
     }
 }
