@@ -50,5 +50,10 @@ namespace DansPrototype
             employee.Close();
             calendar.Close();
         }
+
+        private void HomeScreen_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

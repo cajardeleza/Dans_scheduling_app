@@ -33,23 +33,25 @@ namespace DansPrototype
         private void AvailabilityWindow_Load(object sender, EventArgs e)
         {
             // Restrict dates to current month
+            comboBox1.Items.Clear();
             DateTime date = DateTime.Today;
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
             monthCalendar1.MaxDate = lastDayOfMonth;
             monthCalendar1.MinDate = firstDayOfMonth;
 
+
             // Refresh currently selected
             monthCalendar1.SetDate(firstDayOfMonth);
 
             cmd.Connection = cn;
-        }
+            }
 
         private void AvailabilityWindow_FormClosing(object sender, FormClosingEventArgs e)
-        {
+            {
             e.Cancel = true;
             Hide();
-        }
+            }
 
         public void UpdateData(object sender)
         {
@@ -144,7 +146,26 @@ namespace DansPrototype
             {
                 while (dr.Read())
                 {
+                    if (count == 0)
+                    {
+                        comboBox1.Text = dr[1].ToString() + " " + dr[2].ToString();
+                    }
+
                     comboBox1.Items.Add(dr[1].ToString() + " " + dr[2].ToString());
+                    count++;
+                }
+            }
+            cn.Close();
+        }
+
+        private void serverBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
+        }
+
+        private void bartenderBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            fill_combo_box();
                 }
             }
             cn.Close();
@@ -163,12 +184,12 @@ namespace DansPrototype
         private void busBtn_CheckedChanged(object sender, EventArgs e)
         {
             fill_combo_box();
-        }
+            }
 
         private void hostBtn_CheckedChanged(object sender, EventArgs e)
-        {
+            {
             fill_combo_box();
-        }
+            }
 
         private void expoBtn_CheckedChanged(object sender, EventArgs e)
         {
@@ -189,7 +210,7 @@ namespace DansPrototype
             {
                 int index = days.IndexOf(i);
                 if (index == -1) // add to list
-                {
+            {
                     days.Add(i);
                     availability.Add(0);
                 } else
@@ -197,13 +218,13 @@ namespace DansPrototype
                     days.RemoveAt(index);
                     availability.RemoveAt(index);
                 }
-            }
+                }
             // sort
             ArrayList sort = new ArrayList();
             foreach (var o in selectedList.Items)
-            {
+                {
                 sort.Add(o);
-            }
+                }
             sort.Sort();
             selectedList.Items.Clear();
             foreach (var o in sort)

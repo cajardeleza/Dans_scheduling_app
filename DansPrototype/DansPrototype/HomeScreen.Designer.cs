@@ -106,6 +106,7 @@
             this.Name = "HomeScreen";
             this.Text = "Scheduler";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.HomeScreen_FormClosing);
+            this.Load += new System.EventHandler(this.HomeScreen_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
