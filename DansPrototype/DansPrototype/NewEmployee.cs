@@ -21,6 +21,7 @@ namespace DansPrototype
         private MySqlCommand cmd = new MySqlCommand();
         private MySqlDataReader dr;
         private ListViewItem newItem = null;
+        private List<int> ids = new List<int>();
 
         public NewEmployee()
         {
@@ -44,6 +45,7 @@ namespace DansPrototype
         private void loadList()
         {
             listView1.Items.Clear();
+            ids.Clear();
             cn.Open();
             cmd.CommandText = "select * from employees";
             dr = cmd.ExecuteReader();
@@ -51,11 +53,11 @@ namespace DansPrototype
             {
                 while (dr.Read())
                 {
-                    ListViewItem item = new ListViewItem(dr[0].ToString());
-                    item.SubItems.Add(new ListViewItem.ListViewSubItem(item, dr[1].ToString()));
+                    ListViewItem item = new ListViewItem(dr[1].ToString());
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, dr[2].ToString()));
                     item.SubItems.Add(new ListViewItem.ListViewSubItem(item, dr[3].ToString()));
                     listView1.Items.Add(item);
+                    ids.Add(int.Parse(dr[0].ToString()));
                 }
             }
             cn.Close();
@@ -65,12 +67,10 @@ namespace DansPrototype
         {
             if (listView1.SelectedItems.Count > 0)
             {
-                txtid.Text = listView1.SelectedItems[0].Text;
-                txtfname.Text = listView1.SelectedItems[0].SubItems[1].Text;
-                txtlastname.Text = listView1.SelectedItems[0].SubItems[2].Text;
-                txtposition.Text = listView1.SelectedItems[0].SubItems[3].Text;
+                txtfname.Text = listView1.SelectedItems[0].Text;
+                txtlastname.Text = listView1.SelectedItems[0].SubItems[1].Text;
+                txtposition.Text = listView1.SelectedItems[0].SubItems[2].Text;
                 deleteEmployee.Enabled = true;
-                txtid.Enabled = true;
                 txtfname.Enabled = true;
                 txtlastname.Enabled = true;
                 txtposition.Enabled = true;
@@ -82,7 +82,6 @@ namespace DansPrototype
             } else
             {
                 deleteEmployee.Enabled = false;
-                txtid.Enabled = false;
                 txtfname.Enabled = false;
                 txtlastname.Enabled = false;
                 txtposition.Enabled = false;
@@ -103,16 +102,15 @@ namespace DansPrototype
 
         private void submitBtn_Click(object sender, EventArgs e)
         {
-            if (txtid.Text != "" & txtfname.Text != "" & txtlastname.Text != "" & txtposition.Text != "")
+            if (txtfname.Text != "" & txtlastname.Text != "" & txtposition.Text != "")
         {
                 cn.Open();
-
-                cmd.CommandText = "insert into employees (id_num, Employee_FirstName, Employee_LastName, Employee_position) values ('" + txtid.Text + "','" + txtfname.Text + " ',' " + txtlastname.Text + " ',' " + txtposition.Text + "')";
+                int nextId = ids[ids.Count - 1] + 1;
+                cmd.CommandText = "insert into employees (id_num, Employee_FirstName, Employee_LastName, Employee_position) values ('" + nextId + "','" + txtfname.Text + " ',' " + txtlastname.Text + " ',' " + txtposition.Text + "')";
                 cmd.ExecuteNonQuery();
                 cmd.Clone();
                 MessageBox.Show("record inserted", "programming at c.Jard");
                 cn.Close();
-                txtid.Text = "";
                 txtfname.Text = "";
                 txtlastname.Text = "";
                 txtposition.Text = "";
@@ -124,8 +122,7 @@ namespace DansPrototype
         {
             if (newItem != null)
                 newItem.Remove();
-            newItem = new ListViewItem(((int.Parse(listView1.Items[listView1.Items.Count - 1].Text)) + 1).ToString());
-            newItem.SubItems.Add(new ListViewItem.ListViewSubItem(newItem, "First"));
+            newItem = new ListViewItem("First");
             newItem.SubItems.Add(new ListViewItem.ListViewSubItem(newItem, "Last"));
             newItem.SubItems.Add(new ListViewItem.ListViewSubItem(newItem, "Server"));
             listView1.Items.Add(newItem);

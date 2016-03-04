@@ -34,8 +34,6 @@ namespace DansPrototype
             this.txtlastname = new System.Windows.Forms.TextBox();
             this.addBtn = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtid = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,7 +41,6 @@ namespace DansPrototype
             this.txtposition = new System.Windows.Forms.ComboBox();
             this.submitBtn = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
-            this.id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.firstName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lastName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.position = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -52,7 +49,7 @@ namespace DansPrototype
             // txtfname
             // 
             this.txtfname.Enabled = false;
-            this.txtfname.Location = new System.Drawing.Point(315, 99);
+            this.txtfname.Location = new System.Drawing.Point(316, 82);
             this.txtfname.Name = "txtfname";
             this.txtfname.Size = new System.Drawing.Size(116, 20);
             this.txtfname.TabIndex = 1;
@@ -60,7 +57,7 @@ namespace DansPrototype
             // txtlastname
             // 
             this.txtlastname.Enabled = false;
-            this.txtlastname.Location = new System.Drawing.Point(315, 128);
+            this.txtlastname.Location = new System.Drawing.Point(316, 111);
             this.txtlastname.Name = "txtlastname";
             this.txtlastname.Size = new System.Drawing.Size(116, 20);
             this.txtlastname.TabIndex = 2;
@@ -84,27 +81,10 @@ namespace DansPrototype
             this.label1.TabIndex = 6;
             this.label1.Text = "Employee List";
             // 
-            // txtid
-            // 
-            this.txtid.Enabled = false;
-            this.txtid.Location = new System.Drawing.Point(315, 70);
-            this.txtid.Name = "txtid";
-            this.txtid.Size = new System.Drawing.Size(116, 20);
-            this.txtid.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(251, 73);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "ID number";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(251, 102);
+            this.label3.Location = new System.Drawing.Point(252, 85);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 13);
             this.label3.TabIndex = 9;
@@ -113,7 +93,7 @@ namespace DansPrototype
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(251, 131);
+            this.label4.Location = new System.Drawing.Point(252, 114);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 10;
@@ -122,7 +102,7 @@ namespace DansPrototype
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(251, 159);
+            this.label5.Location = new System.Drawing.Point(252, 142);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 13);
             this.label5.TabIndex = 11;
@@ -150,7 +130,7 @@ namespace DansPrototype
             "Host",
             "Expo",
             "Manager"});
-            this.txtposition.Location = new System.Drawing.Point(315, 156);
+            this.txtposition.Location = new System.Drawing.Point(316, 139);
             this.txtposition.Name = "txtposition";
             this.txtposition.Size = new System.Drawing.Size(116, 21);
             this.txtposition.TabIndex = 3;
@@ -159,7 +139,7 @@ namespace DansPrototype
             // submitBtn
             // 
             this.submitBtn.Enabled = false;
-            this.submitBtn.Location = new System.Drawing.Point(315, 183);
+            this.submitBtn.Location = new System.Drawing.Point(316, 166);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(116, 23);
             this.submitBtn.TabIndex = 12;
@@ -170,7 +150,6 @@ namespace DansPrototype
             // listView1
             // 
             this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.id,
             this.firstName,
             this.lastName,
             this.position});
@@ -186,25 +165,21 @@ namespace DansPrototype
             this.listView1.View = System.Windows.Forms.View.Details;
             this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
-            // id
-            // 
-            this.id.Text = "ID";
-            // 
             // firstName
             // 
             this.firstName.Text = "First";
-            this.firstName.Width = 44;
+            this.firstName.Width = 61;
             // 
             // lastName
             // 
             this.lastName.Text = "Last";
-            this.lastName.Width = 41;
+            this.lastName.Width = 49;
             // 
             // position
             // 
             this.position.Text = "Position";
             this.position.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.position.Width = 65;
+            this.position.Width = 99;
             // 
             // NewEmployee
             // 
@@ -219,8 +194,6 @@ namespace DansPrototype
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtid);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.txtlastname);
@@ -254,8 +227,6 @@ namespace DansPrototype
         private System.Windows.Forms.TextBox txtlastname;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtid;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -263,7 +234,6 @@ namespace DansPrototype
         private System.Windows.Forms.ComboBox txtposition;
         private System.Windows.Forms.Button submitBtn;
         private System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ColumnHeader id;
         private System.Windows.Forms.ColumnHeader firstName;
         private System.Windows.Forms.ColumnHeader lastName;
         private System.Windows.Forms.ColumnHeader position;
