@@ -81,7 +81,7 @@
             // submitBtn
             // 
             this.submitBtn.Enabled = false;
-            this.submitBtn.Location = new System.Drawing.Point(516, 273);
+            this.submitBtn.Location = new System.Drawing.Point(516, 235);
             this.submitBtn.Name = "submitBtn";
             this.submitBtn.Size = new System.Drawing.Size(156, 32);
             this.submitBtn.TabIndex = 17;
@@ -208,6 +208,7 @@
             this.amBtn.TabIndex = 15;
             this.amBtn.Text = "AM";
             this.amBtn.UseVisualStyleBackColor = true;
+            this.amBtn.CheckedChanged += new System.EventHandler(this.amBtn_CheckedChanged);
             // 
             // pmBtn
             // 
@@ -220,6 +221,7 @@
             this.pmBtn.TabIndex = 16;
             this.pmBtn.Text = "PM";
             this.pmBtn.UseVisualStyleBackColor = true;
+            this.pmBtn.CheckedChanged += new System.EventHandler(this.pmBtn_CheckedChanged);
             // 
             // AvailabilityWindow
             // 

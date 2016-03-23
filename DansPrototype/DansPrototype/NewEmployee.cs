@@ -108,6 +108,11 @@ namespace DansPrototype
                 int nextId = ids[ids.Count - 1] + 1;
                 cmd.CommandText = "insert into employees (id_num, Employee_FirstName, Employee_LastName, Employee_position) values ('" + nextId + "','" + txtfname.Text + " ',' " + txtlastname.Text + " ',' " + txtposition.Text + "')";
                 cmd.ExecuteNonQuery();
+                for(int i=1; i<32;i++)
+                {
+                    cmd.CommandText = "update employees set day" + i + "='1' where id_num ='" + nextId + "'";
+                    cmd.ExecuteNonQuery();
+                }
                 cmd.Clone();
                 MessageBox.Show("record inserted", "programming at c.Jard");
                 cn.Close();
@@ -122,6 +127,7 @@ namespace DansPrototype
         {
             if (newItem != null)
                 newItem.Remove();
+            
             newItem = new ListViewItem("First");
             newItem.SubItems.Add(new ListViewItem.ListViewSubItem(newItem, "Last"));
             newItem.SubItems.Add(new ListViewItem.ListViewSubItem(newItem, "Server"));
