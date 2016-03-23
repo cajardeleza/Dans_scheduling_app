@@ -26,6 +26,8 @@ namespace DansPrototype
         public NewEmployee()
         {
             InitializeComponent();
+
+            Location = new Point(Screen.FromControl(this).Bounds.Left, 0);
         }
 
         private void NewEmployee_Load(object sender, EventArgs e)

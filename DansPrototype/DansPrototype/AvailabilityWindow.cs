@@ -28,6 +28,8 @@ namespace DansPrototype
         public AvailabilityWindow()
         {
             InitializeComponent();
+
+            Location = new Point(Screen.FromControl(this).Bounds.Width - Width, 0);
         }
 
         private void AvailabilityWindow_Load(object sender, EventArgs e)
@@ -221,14 +223,18 @@ namespace DansPrototype
             // check in-between dates
             for (var i = start.Day; i <= end.Day; i++)
             {
+                DateTime day = start.AddDays(start.Day - i);
                 int index = days.IndexOf(i);
                 if (index == -1) // add to list
-            {
+                {
                     days.Add(i);
+                    // bold these dates
+                    monthCalendar1.AddBoldedDate(day);
                     availability.Add(0);
-                } else
+                } else // remove from list
                 {
                     days.RemoveAt(index);
+                    monthCalendar1.RemoveBoldedDate(day);
                     availability.RemoveAt(index);
                 }
                 }
