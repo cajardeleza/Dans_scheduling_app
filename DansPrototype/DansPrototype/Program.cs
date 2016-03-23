@@ -46,7 +46,7 @@ namespace DansPrototype
 
             DateTime dt = DateTime.Now;
 
-            Application.Run(new HomeScreen());
+                Application.Run(new HomeScreen());
+            }
         }
     }
-}

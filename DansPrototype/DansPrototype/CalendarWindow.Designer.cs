@@ -35,213 +35,267 @@
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("Expo", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("Manager", System.Windows.Forms.HorizontalAlignment.Left);
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox3 = new System.Windows.Forms.ListBox();
+            this.button6 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.managerChkBox = new System.Windows.Forms.CheckBox();
-            this.expoChkBox = new System.Windows.Forms.CheckBox();
-            this.hostChkBox = new System.Windows.Forms.CheckBox();
-            this.busChkBox = new System.Windows.Forms.CheckBox();
-            this.bartenderChkBox = new System.Windows.Forms.CheckBox();
-            this.serverChkBox = new System.Windows.Forms.CheckBox();
-            this.addToWorking = new System.Windows.Forms.Button();
-            this.addToAvailable = new System.Windows.Forms.Button();
-            this.workingList = new System.Windows.Forms.ListView();
-            this.availableList = new System.Windows.Forms.ListView();
+            this.managerBtn = new System.Windows.Forms.CheckBox();
+            this.hostBtn = new System.Windows.Forms.CheckBox();
+            this.expoBtn = new System.Windows.Forms.CheckBox();
+            this.busBtn = new System.Windows.Forms.CheckBox();
+            this.bartenderBtn = new System.Windows.Forms.CheckBox();
+            this.serverBtn = new System.Windows.Forms.CheckBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.am_Btn = new System.Windows.Forms.Button();
+            this.pmBtn = new System.Windows.Forms.Button();
+            this.doubleBtn = new System.Windows.Forms.Button();
+            this.selected_Employee = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(187, 29);
-            this.monthCalendar1.MaxDate = new System.DateTime(2016, 2, 29, 0, 0, 0, 0);
-            this.monthCalendar1.MaxSelectionCount = 31;
-            this.monthCalendar1.MinDate = new System.DateTime(2016, 2, 1, 0, 0, 0, 0);
+            this.monthCalendar1.Location = new System.Drawing.Point(22, 154);
+            this.monthCalendar1.MaxSelectionCount = 1;
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
             this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(284, 78);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(186, 108);
+            this.listBox1.TabIndex = 6;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(284, 218);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(186, 108);
+            this.listBox2.TabIndex = 7;
+            // 
+            // listBox3
+            // 
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(638, 62);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(175, 264);
+            this.listBox3.TabIndex = 8;
+            this.listBox3.SelectedIndexChanged += new System.EventHandler(this.listBox3_SelectedIndexChanged_1);
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(303, 336);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(148, 25);
+            this.button6.TabIndex = 9;
+            this.button6.Text = "Sumbit To Schedule";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(646, 13);
+            this.label1.Location = new System.Drawing.Point(331, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(91, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Currently Working";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(458, 13);
+            this.label2.Location = new System.Drawing.Point(674, 46);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Available to Work";
+            this.label2.Size = new System.Drawing.Size(95, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Available To Work";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(674, 335);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 26);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Click on Employee to \r\nadd to currently working";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.managerChkBox);
-            this.groupBox1.Controls.Add(this.expoChkBox);
-            this.groupBox1.Controls.Add(this.hostChkBox);
-            this.groupBox1.Controls.Add(this.busChkBox);
-            this.groupBox1.Controls.Add(this.bartenderChkBox);
-            this.groupBox1.Controls.Add(this.serverChkBox);
-            this.groupBox1.Location = new System.Drawing.Point(12, 29);
+            this.groupBox1.Controls.Add(this.managerBtn);
+            this.groupBox1.Controls.Add(this.hostBtn);
+            this.groupBox1.Controls.Add(this.expoBtn);
+            this.groupBox1.Controls.Add(this.busBtn);
+            this.groupBox1.Controls.Add(this.bartenderBtn);
+            this.groupBox1.Controls.Add(this.serverBtn);
+            this.groupBox1.Location = new System.Drawing.Point(18, 46);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(163, 117);
-            this.groupBox1.TabIndex = 5;
+            this.groupBox1.Size = new System.Drawing.Size(238, 96);
+            this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Filter";
+            this.groupBox1.Text = "filter";
             // 
-            // managerChkBox
+            // managerBtn
             // 
-            this.managerChkBox.Appearance = System.Windows.Forms.Appearance.Button;
-            this.managerChkBox.AutoSize = true;
-            this.managerChkBox.Location = new System.Drawing.Point(6, 78);
-            this.managerChkBox.Name = "managerChkBox";
-            this.managerChkBox.Size = new System.Drawing.Size(59, 23);
-            this.managerChkBox.TabIndex = 5;
-            this.managerChkBox.Text = "Manager";
-            this.managerChkBox.UseVisualStyleBackColor = true;
-            this.managerChkBox.CheckedChanged += new System.EventHandler(this.managerChkBox_CheckedChanged);
+            this.managerBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.managerBtn.AutoSize = true;
+            this.managerBtn.Location = new System.Drawing.Point(160, 48);
+            this.managerBtn.Name = "managerBtn";
+            this.managerBtn.Size = new System.Drawing.Size(64, 23);
+            this.managerBtn.TabIndex = 20;
+            this.managerBtn.Text = "Managers";
+            this.managerBtn.UseVisualStyleBackColor = true;
+            this.managerBtn.CheckedChanged += new System.EventHandler(this.managerBtn_CheckedChanged_1);
             // 
-            // expoChkBox
+            // hostBtn
             // 
-            this.expoChkBox.Appearance = System.Windows.Forms.Appearance.Button;
-            this.expoChkBox.AutoSize = true;
-            this.expoChkBox.Location = new System.Drawing.Point(93, 49);
-            this.expoChkBox.Name = "expoChkBox";
-            this.expoChkBox.Size = new System.Drawing.Size(41, 23);
-            this.expoChkBox.TabIndex = 4;
-            this.expoChkBox.Text = "Expo";
-            this.expoChkBox.UseVisualStyleBackColor = true;
-            this.expoChkBox.CheckedChanged += new System.EventHandler(this.expoChkBox_CheckedChanged);
+            this.hostBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.hostBtn.AutoSize = true;
+            this.hostBtn.Location = new System.Drawing.Point(83, 48);
+            this.hostBtn.Name = "hostBtn";
+            this.hostBtn.Size = new System.Drawing.Size(39, 23);
+            this.hostBtn.TabIndex = 19;
+            this.hostBtn.Text = "Host\r\n";
+            this.hostBtn.UseVisualStyleBackColor = true;
+            this.hostBtn.CheckedChanged += new System.EventHandler(this.hostBtn_CheckedChanged_1);
             // 
-            // hostChkBox
+            // expoBtn
             // 
-            this.hostChkBox.Appearance = System.Windows.Forms.Appearance.Button;
-            this.hostChkBox.AutoSize = true;
-            this.hostChkBox.Location = new System.Drawing.Point(48, 49);
-            this.hostChkBox.Name = "hostChkBox";
-            this.hostChkBox.Size = new System.Drawing.Size(39, 23);
-            this.hostChkBox.TabIndex = 3;
-            this.hostChkBox.Text = "Host";
-            this.hostChkBox.UseVisualStyleBackColor = true;
-            this.hostChkBox.CheckedChanged += new System.EventHandler(this.hostChkBox_CheckedChanged);
+            this.expoBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.expoBtn.AutoSize = true;
+            this.expoBtn.Location = new System.Drawing.Point(6, 48);
+            this.expoBtn.Name = "expoBtn";
+            this.expoBtn.Size = new System.Drawing.Size(41, 23);
+            this.expoBtn.TabIndex = 18;
+            this.expoBtn.Text = "Expo";
+            this.expoBtn.UseVisualStyleBackColor = true;
+            this.expoBtn.CheckedChanged += new System.EventHandler(this.expoBtn_CheckedChanged_1);
             // 
-            // busChkBox
+            // busBtn
             // 
-            this.busChkBox.Appearance = System.Windows.Forms.Appearance.Button;
-            this.busChkBox.AutoSize = true;
-            this.busChkBox.Location = new System.Drawing.Point(7, 49);
-            this.busChkBox.Name = "busChkBox";
-            this.busChkBox.Size = new System.Drawing.Size(35, 23);
-            this.busChkBox.TabIndex = 2;
-            this.busChkBox.Text = "Bus";
-            this.busChkBox.UseVisualStyleBackColor = true;
-            this.busChkBox.CheckedChanged += new System.EventHandler(this.busChkBox_CheckedChanged);
+            this.busBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.busBtn.AutoSize = true;
+            this.busBtn.Location = new System.Drawing.Point(160, 19);
+            this.busBtn.Name = "busBtn";
+            this.busBtn.Size = new System.Drawing.Size(49, 23);
+            this.busBtn.TabIndex = 17;
+            this.busBtn.Text = "Busers";
+            this.busBtn.UseVisualStyleBackColor = true;
+            this.busBtn.CheckedChanged += new System.EventHandler(this.busBtn_CheckedChanged_1);
             // 
-            // bartenderChkBox
+            // bartenderBtn
             // 
-            this.bartenderChkBox.Appearance = System.Windows.Forms.Appearance.Button;
-            this.bartenderChkBox.AutoSize = true;
-            this.bartenderChkBox.Location = new System.Drawing.Point(61, 19);
-            this.bartenderChkBox.Name = "bartenderChkBox";
-            this.bartenderChkBox.Size = new System.Drawing.Size(63, 23);
-            this.bartenderChkBox.TabIndex = 1;
-            this.bartenderChkBox.Text = "Bartender";
-            this.bartenderChkBox.UseVisualStyleBackColor = true;
-            this.bartenderChkBox.CheckedChanged += new System.EventHandler(this.bartenderChkBox_CheckedChanged);
+            this.bartenderBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.bartenderBtn.AutoSize = true;
+            this.bartenderBtn.Location = new System.Drawing.Point(83, 19);
+            this.bartenderBtn.Name = "bartenderBtn";
+            this.bartenderBtn.Size = new System.Drawing.Size(68, 23);
+            this.bartenderBtn.TabIndex = 16;
+            this.bartenderBtn.Text = "Bartenders";
+            this.bartenderBtn.UseVisualStyleBackColor = true;
+            this.bartenderBtn.CheckedChanged += new System.EventHandler(this.bartenderBtn_CheckedChanged_1);
             // 
-            // serverChkBox
+            // serverBtn
             // 
-            this.serverChkBox.Appearance = System.Windows.Forms.Appearance.Button;
-            this.serverChkBox.AutoSize = true;
-            this.serverChkBox.Location = new System.Drawing.Point(7, 20);
-            this.serverChkBox.Name = "serverChkBox";
-            this.serverChkBox.Size = new System.Drawing.Size(48, 23);
-            this.serverChkBox.TabIndex = 0;
-            this.serverChkBox.Text = "Server";
-            this.serverChkBox.UseVisualStyleBackColor = true;
-            this.serverChkBox.CheckedChanged += new System.EventHandler(this.serverChkBox_CheckedChanged);
+            this.serverBtn.Appearance = System.Windows.Forms.Appearance.Button;
+            this.serverBtn.AutoSize = true;
+            this.serverBtn.Location = new System.Drawing.Point(6, 16);
+            this.serverBtn.Name = "serverBtn";
+            this.serverBtn.Size = new System.Drawing.Size(53, 23);
+            this.serverBtn.TabIndex = 15;
+            this.serverBtn.Text = "Servers";
+            this.serverBtn.UseVisualStyleBackColor = true;
+            this.serverBtn.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // addToWorking
+            // label4
             // 
-            this.addToWorking.Location = new System.Drawing.Point(583, 146);
-            this.addToWorking.Name = "addToWorking";
-            this.addToWorking.Size = new System.Drawing.Size(24, 23);
-            this.addToWorking.TabIndex = 6;
-            this.addToWorking.Text = ">";
-            this.addToWorking.UseVisualStyleBackColor = true;
-            this.addToWorking.Click += new System.EventHandler(this.addToWorking_Click);
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(290, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(69, 13);
+            this.label4.TabIndex = 15;
+            this.label4.Text = "Morning Shift";
             // 
-            // addToAvailable
+            // label5
             // 
-            this.addToAvailable.Location = new System.Drawing.Point(583, 175);
-            this.addToAvailable.Name = "addToAvailable";
-            this.addToAvailable.Size = new System.Drawing.Size(24, 23);
-            this.addToAvailable.TabIndex = 7;
-            this.addToAvailable.Text = "<";
-            this.addToAvailable.UseVisualStyleBackColor = true;
-            this.addToAvailable.Click += new System.EventHandler(this.addToAvailable_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(290, 202);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Evening Shift";
             // 
-            // workingList
+            // am_Btn
             // 
-            this.workingList.Location = new System.Drawing.Point(616, 33);
-            this.workingList.Name = "workingList";
-            this.workingList.Size = new System.Drawing.Size(145, 286);
-            this.workingList.TabIndex = 8;
-            this.workingList.UseCompatibleStateImageBehavior = false;
-            this.workingList.SelectedIndexChanged += new System.EventHandler(this.workingList_SelectedIndexChanged);
+            this.am_Btn.Location = new System.Drawing.Point(482, 187);
+            this.am_Btn.Name = "am_Btn";
+            this.am_Btn.Size = new System.Drawing.Size(35, 28);
+            this.am_Btn.TabIndex = 17;
+            this.am_Btn.Text = "AM";
+            this.am_Btn.UseVisualStyleBackColor = true;
+            this.am_Btn.Click += new System.EventHandler(this.am_Btn_Click);
             // 
-            // availableList
+            // pmBtn
             // 
-            this.availableList.FullRowSelect = true;
-            listViewGroup1.Header = "Server";
-            listViewGroup1.Name = "serverGroup";
-            listViewGroup2.Header = "Bartender";
-            listViewGroup2.Name = "bartenderGroup";
-            listViewGroup3.Header = "Bus";
-            listViewGroup3.Name = "busGroup";
-            listViewGroup4.Header = "Host";
-            listViewGroup4.Name = "hostGroup";
-            listViewGroup5.Header = "Expo";
-            listViewGroup5.Name = "expoGroup";
-            listViewGroup6.Header = "Manager";
-            listViewGroup6.Name = "managerGroup";
-            this.availableList.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2,
-            listViewGroup3,
-            listViewGroup4,
-            listViewGroup5,
-            listViewGroup6});
-            this.availableList.Location = new System.Drawing.Point(427, 29);
-            this.availableList.Name = "availableList";
-            this.availableList.Size = new System.Drawing.Size(150, 290);
-            this.availableList.TabIndex = 9;
-            this.availableList.UseCompatibleStateImageBehavior = false;
-            this.availableList.View = System.Windows.Forms.View.SmallIcon;
-            this.availableList.SelectedIndexChanged += new System.EventHandler(this.availableList_SelectedIndexChanged);
+            this.pmBtn.Location = new System.Drawing.Point(523, 187);
+            this.pmBtn.Name = "pmBtn";
+            this.pmBtn.Size = new System.Drawing.Size(35, 28);
+            this.pmBtn.TabIndex = 18;
+            this.pmBtn.Text = "PM";
+            this.pmBtn.UseVisualStyleBackColor = true;
+            this.pmBtn.Click += new System.EventHandler(this.pmBtn_Click);
+            // 
+            // doubleBtn
+            // 
+            this.doubleBtn.Location = new System.Drawing.Point(564, 187);
+            this.doubleBtn.Name = "doubleBtn";
+            this.doubleBtn.Size = new System.Drawing.Size(68, 28);
+            this.doubleBtn.TabIndex = 19;
+            this.doubleBtn.Text = "Double";
+            this.doubleBtn.UseVisualStyleBackColor = true;
+            this.doubleBtn.Click += new System.EventHandler(this.doubleBtn_Click);
+            // 
+            // selected_Employee
+            // 
+            this.selected_Employee.Enabled = false;
+            this.selected_Employee.Location = new System.Drawing.Point(482, 157);
+            this.selected_Employee.Name = "selected_Employee";
+            this.selected_Employee.Size = new System.Drawing.Size(150, 20);
+            this.selected_Employee.TabIndex = 20;
             // 
             // CalendarWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(773, 326);
-            this.Controls.Add(this.availableList);
-            this.Controls.Add(this.workingList);
-            this.Controls.Add(this.addToAvailable);
-            this.Controls.Add(this.addToWorking);
+            this.ClientSize = new System.Drawing.Size(851, 387);
+            this.Controls.Add(this.selected_Employee);
+            this.Controls.Add(this.doubleBtn);
+            this.Controls.Add(this.pmBtn);
+            this.Controls.Add(this.am_Btn);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.listBox3);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.monthCalendar1);
             this.Name = "CalendarWindow";
             this.Text = "Calander Window";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CalendarWindow_FormClosing);
-            this.Load += new System.EventHandler(this.CalendarWindow_Load);
+            this.Load += new System.EventHandler(this.calanderWindow_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -252,18 +306,25 @@
         #endregion
 
         private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.CheckBox busChkBox;
-        private System.Windows.Forms.CheckBox bartenderChkBox;
-        private System.Windows.Forms.CheckBox serverChkBox;
-        private System.Windows.Forms.CheckBox hostChkBox;
-        private System.Windows.Forms.CheckBox managerChkBox;
-        private System.Windows.Forms.CheckBox expoChkBox;
-        private System.Windows.Forms.Button addToWorking;
-        private System.Windows.Forms.Button addToAvailable;
-        private System.Windows.Forms.ListView workingList;
-        private System.Windows.Forms.ListView availableList;
+        private System.Windows.Forms.CheckBox serverBtn;
+        private System.Windows.Forms.CheckBox managerBtn;
+        private System.Windows.Forms.CheckBox hostBtn;
+        private System.Windows.Forms.CheckBox expoBtn;
+        private System.Windows.Forms.CheckBox busBtn;
+        private System.Windows.Forms.CheckBox bartenderBtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button am_Btn;
+        private System.Windows.Forms.Button pmBtn;
+        private System.Windows.Forms.Button doubleBtn;
+        private System.Windows.Forms.TextBox selected_Employee;
     }
 }
