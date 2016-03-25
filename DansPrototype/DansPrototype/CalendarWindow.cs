@@ -54,20 +54,10 @@ namespace DansPrototype
             listBox1.Items.Clear();
             listBox2.Items.Clear();
             listBox3.Items.Clear();
-            
-
-            DateTime date = DateTime.Today;
-            var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
-            var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
-            monthCalendar1.MaxDate = lastDayOfMonth;
-            monthCalendar1.MinDate = firstDayOfMonth;
 
             pmBtn.Enabled = false;
             am_Btn.Enabled = false;
             doubleBtn.Enabled = false;
-            
-            
-
 
             // Refresh currently selected
             monthCalendar1.SetDate(firstDayOfMonth);
@@ -80,10 +70,7 @@ namespace DansPrototype
             e.Cancel = true;
             Hide();
         }
-
-   
         
-
         private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
         {
             DateTime start = monthCalendar1.SelectionStart;
@@ -129,18 +116,13 @@ namespace DansPrototype
                 listBox3.Items.Clear();
                 add_to_availableBox(selected_day);
             }
-
-
         }
 
-       
         private void add_to_availableBox(int day)
         {
-            
             Console.Write("available");
             List<string> positions = new List<string>();
-
-
+            
             if (serverBtn.Checked)
                 positions.Add("Server");
             if (bartenderBtn.Checked)
@@ -153,17 +135,14 @@ namespace DansPrototype
                 positions.Add("Expo");
             if (managerBtn.Checked)
                 positions.Add("Manager");
-
-
+            
             // if no filters are selected, do nothing
             if (positions.Count == 0)
                 return;
 
             cn.Open();
             //cmd.CommandText = "select * from employees where Employee_position=";
-
-
-
+            
             if (positions.Count == 1)
             {
                 cmd.CommandText = "select * from employees where Employee_position='" + positions[0] + "'and day" + selected_day + "='1'"; ;
@@ -173,22 +152,17 @@ namespace DansPrototype
                 cmd.CommandText = "select * from employees where Employee_position in ('" + positions[0] +"'";
                 //WHERE id in (3,4)
                 for (var i = 1; i < positions.Count; i++)
-        {
+                {
                     cmd.CommandText += ",'" + positions[i] + "'";
                 }
-
                 cmd.CommandText += ") and day"+selected_day+"='1'";
-
-        }
-
+            }
             
-
-
             dr = cmd.ExecuteReader();
             if (dr.HasRows)
             {
                 while (dr.Read())
-        {
+                {
 
                     listBox3.Items.Add(dr[0] + "  " + dr[1].ToString() + " " + dr[2].ToString());
 
@@ -196,12 +170,7 @@ namespace DansPrototype
                 }
             }
             cn.Close();
-
-
         }
-
-
-       
 
         private void listBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -228,12 +197,8 @@ namespace DansPrototype
             HomeScreen home = new HomeScreen();
             home.Show();
             this.Hide();
-
-            
         }
-
         
-
         private void button1_Click_1(object sender, EventArgs e)
         {
 
@@ -248,9 +213,7 @@ namespace DansPrototype
         {
 
         }
-
-      
-
+        
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             listBox3.Items.Clear();
@@ -321,7 +284,6 @@ namespace DansPrototype
                     {
                         i = size;
                     }
-
                     else
                     {
                         ID += emp[i];
